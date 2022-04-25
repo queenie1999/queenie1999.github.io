@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>課堂作業06</title>
+	<style>
+	    h4 {
+		    color: red;
+		}
+		p {
+		   margin: 5px;
+		}
+		div {
+		     color: blue;
+		}
+	</style>
+
+</head>
+
+<body>
+<script>
+	var myName = "周宥萱";
+	var myAge = 22;
+	var myHeight = 163; myWeight = 55;
+	document.write("<p>1.我是B4B40，周宥萱</p>");
+	document.write("<p><h4>2.大家好！我最喜歡吃的水果是蘋果🍎</h4></p>");
+	document.write("<b><div>以下為變數設定練習</div></b>");
+	document.write("<p>3.我是" + myName + "，今年" + myAge + "歲" + "</p>");
+	document.write("<p>4.我的身高為" + myHeight + "公分" + "我的體重為" + myWeight + "公斤" +"</p>");
+	document.write("<p>5.所以我的BMI為" + myWeight / Math.pow((myHeight/100),2)  + "</p>");
+	document.write("<b><div>以下for計次迴圈控制</div></b>");
+    var sum = 0;
+    for (i=1;i<=100;i++){
+    sum += i;
+    }
+    document.write("<p>6.從1加到100的總和為" + sum);
+	var count = 6;
+	function showSum(endNo){
+	    var sum = 0;
+        for (i=1;i<=endNo;i++){
+        sum += i;
+        }
+        count += 1;
+        document.write("<p>"+ count + ".從1加到" + endNo + "的總和為" + sum + "</p>");
+    }
+    showSum(10);
+    showSum(100);
+    showSum(1000);
+    showSum(10000);
+    document.write("<b><div>以下為九九乘法表</div></b>");
+
+    function nTimesNtable(n){
+        for (i=1;i<=n;i++){
+            for (j=1;j<=n;j++){
+                document.write(i + "X" + j + "=" + i*j + "  ");
+            }
+            document.write("<br>");
+        }
+    }
+    nTimesNtable(9);
+</script>
+
+</body>
+
+</html>

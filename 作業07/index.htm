@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>家庭作業07</title>
+	<style>
+		p {
+		   margin: 5px;
+		}
+		div {
+		     color: navy;
+		}
+		table {
+		    width: 50%;
+		    border-color: lightblue;
+		    border-style:solid;
+		    border-collapse: collapse;
+		}
+		th {
+		    text-align: center;
+		    border-color: lightblue;
+		    border-style:solid;
+		}
+		tr {
+		    text-align: center;
+		    border-color: lightblue;
+		    border-style:solid;
+		}
+		td {
+		    vertical-align: middle;
+		    border-color: lightblue;
+		    border-style:solid;
+		}
+	</style>
+    </head>
+    <body><div><h1>✖九九乘法表✖</h1></div></body>
+
+    <table border="1">
+
+    <script>
+        for(var i=0;i<1;i++)
+      {
+         document.write("<tr>");
+           for(j=1;j<10;j++)
+         {
+             for(k=9*i+1;k<=9*i+9;k++)
+           {
+               document.write("<td>"+k+"x"+j+"="+k*j+"</td>");
+             }
+                 document.write("<tr>");
+               }
+    document.write("<tr>");
+      }
+</script>
+</table>
+
+</html>

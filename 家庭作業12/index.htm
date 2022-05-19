@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>家庭作業12</title>
+	<style>
+		h4 {
+		   color: red;
+		}
+		div {
+		     color: blue;
+		     margin: 5px;
+		}
+		table {
+		    width: 40%;
+		    border-color: lightskyblue;
+		    border-style:solid;
+		    border-collapse: collapse;
+		}
+		tr:nth-child(2n+1){
+		    background-color: #f1f1f1;
+		    text-align: left;
+		    border-color: lightskyblue;
+		    border-style:solid;
+		}
+		td:nth-child(1){
+		    color: brown;
+		    text-align:left;
+		    border-color: lightskyblue;
+		    border-style:solid;
+		}
+		td:nth-child(3){
+		    color: green;
+		    text-align:left;
+		    border-color: lightskyblue;
+		    border-style:solid;
+	</style>
+</head>
+
+<body>
+<form id="form01">
+    姓名: <input type="text" name="name01" value="周宥萱"><br>
+    收件地址: <input type="text" name="address01" value="台北市松山區八德路三段12巷63弄17號1樓"><br>
+    電話: <input type="tel" name="tel01" value="0988849196"><br>
+    電子郵件: <input type="email" name="email01" value="queenie129@gmail.com"><br>
+    指定送貨日期: <input type="date" name="date01" ><br>
+    蛋糕種類: <br><input type="checkbox" name="cake" id="cake01" value="巧克力戚風蛋糕(4吋)400元">巧克力戚風蛋糕(4吋)400元;
+    購買數量: <input type="number" name="number01"><br>
+    <input type="checkbox" name="cake" id="cake02" value="抹茶千層蛋糕(8吋)1500元">抹茶千層蛋糕(8吋)1500元;
+    購買數量: <input type="number" name="number02"><br>
+    <input type="checkbox" name="cake" id="cake03" value="藍莓乳酪蛋糕(6吋)750元">藍莓乳酪蛋糕(6吋)750元;
+    購買數量: <input type="number" name="number03"><br>
+    <input type="checkbox" name="cake" id="cake04" value="香草冰淇淋蛋糕(8吋)1200元">香草冰淇淋蛋糕(8吋)1200元;
+    購買數量: <input type="number" name="number04"><br>
+</form>
+<br>
+<button onclick="shoppingInfo()"><h4>結帳</h4></button>
+<div id="demo"></div>
+<script>
+    var text = "<h4>您的購物資訊如下:</h4>";
+    text += "<table>";
+    var cake = function (cakeType, cakePrice, no){
+        this.Type = cakeType;
+        this.Price = cakePrice;
+        this.subTotal = function(no){
+            text += "<tr>"
+            text += "<td>" + "蛋糕種類: " + "</td>" + "<td>" + this.Type + "</td>" + "<td>" + no + "單位<br>" + "</td>";
+            text += "</tr>"
+            text += "<tr>"
+            text += "<td>" + "價格小計: " + "</td>" + "<td>" + this.Price * no + "元" + "</td>" + "<td>" + "  " + "</td>";
+            text += "</tr>"
+        };
+    };
+    var cake01 = new cake("巧克力戚風蛋糕(4吋)",400,0);
+    var cake02 = new cake("抹茶千層蛋糕(8吋)",1500,0);
+    var cake03 = new cake("藍莓乳酪蛋糕(6吋)",750,0);
+    var cake04 = new cake("香草冰淇淋蛋糕(8吋)",1200,0);
+
+    function shoppingInfo() {
+        var x = document.getElementById("form01");
+        var item = "";
+        var price = 0;
+        var sumToPay = 0;
+        var i;
+        for (i = 0; i < 5; i++) {
+            switch (i) {
+                case 0:
+                    item = "姓名: ";
+                    break;
+                case 1:
+                    item = "收件地址: ";
+                    break;
+                case 2:
+                    item = "電話: ";
+                    break;
+                case 3:
+                    item = "電子郵件: ";
+                    break;
+                case 4:
+                    item = "指定送貨日期: ";
+                    break;
+            }
+            text += "<tr>"
+            text += "<td>" + item + "</td>" + "<td>" + x.elements[i].value + "<br>" + "</td>" + "<td>" + "  " + "</td>";
+            text += "</tr>"
+        }
+        for (i=5; i<=11; i++) {
+            if (x.elements[i].checked == true) {
+                switch(i){
+                    case 5: cake01.no = x.elements[i+1].value;
+                            sumToPay += cake01.Price * cake01.no;
+                            cake01.subTotal(cake01.no);
+                            break;
+                    case 7: cake02.no = x.elements[i+1].value;
+                            sumToPay += cake02.Price * cake02.no;
+                            cake02.subTotal(cake02.no);
+                            break;
+                    case 9: cake03.no = x.elements[i+1].value;
+                            sumToPay += cake03.Price * cake03.no;
+                            cake03.subTotal(cake03.no);
+                            break;
+                    case 11: cake04.no = x.elements[i+1].value;
+                            sumToPay += cake04.Price * cake04.no;
+                            cake04.subTotal(cake04.no);
+                            break;
+                }
+            }
+        }
+        text += "<tr>"
+        text += "<td>" + "<h4><b>" + "價格合計: " + "</h4></b>" + "</td>" + "<td>" + "<h4><b>" + sumToPay + "元<br>" + "</b></h4>"+ "</td>" + "<td>" + "  " + "</td>";
+        text += "</tr>"
+        document.getElementById("demo").innerHTML = text;
+        text += "</table>";
+    }
+</script>
+</body>
+</html>
